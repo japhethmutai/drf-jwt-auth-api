@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from os import getenv, path
 from pathlib import Path
+from telnetlib import AUTHENTICATION
 from django.core.management.utils import get_random_secret_key
 import dotenv
 
@@ -48,6 +49,7 @@ INSTALLED_APPS = [
     'djoser',
     'corsheaders',
     'drf_spectacular',
+    'social_django',
     'users',
 ]
 
@@ -146,6 +148,12 @@ STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'static'
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+]
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
