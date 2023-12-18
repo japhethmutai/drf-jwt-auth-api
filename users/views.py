@@ -40,7 +40,7 @@ class CustomProviderAuthView(ProviderAuthView):
         return response
 
 
-class CustomerTokenObtainPairView(TokenObtainPairView):
+class CustomTokenObtainPairView(TokenObtainPairView):
     def post(self, request, *args, **kwargs):
         response = super().post(request, *args, **kwargs)
 
@@ -100,7 +100,7 @@ class CustomTokenVerifyView(TokenVerifyView):
         access_token = request.COOKIES.get('access')
 
         if access_token:
-            request.data['access'] = access_token
+            request.data['token'] = access_token
 
         return super().post(request, *args, **kwargs)
 
