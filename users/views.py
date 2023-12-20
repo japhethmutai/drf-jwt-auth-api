@@ -77,6 +77,9 @@ class CustomTokenRefreshView(TokenRefreshView):
         if refresh_token:
             request.data['refresh'] = refresh_token
 
+        else:
+            request.data['refresh'] = 'dummy_refresh_token'
+
         response = super().post(request, *args, **kwargs)
 
         if response.status_code == 200:
