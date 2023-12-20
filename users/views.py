@@ -102,6 +102,9 @@ class CustomTokenVerifyView(TokenVerifyView):
         if access_token:
             request.data['token'] = access_token
 
+        else:
+            request.data['token'] = 'dummy_token'
+
         return super().post(request, *args, **kwargs)
 
 
